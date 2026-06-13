@@ -1,0 +1,19 @@
+{
+  "id": 201,
+  "uuid": "b2c3d4e5-f6a7-8901-bcde-fedcba987654",
+  "companyName": "Northern Heating Supplies Ltd",
+  "contactName": "Sarah Bennett",
+  "email": "orders@northernheating.co.uk",
+  "telephone": "01614567890",
+  "address": {
+    "addressLine1": "Unit 5 Industrial Park",
+    "addressLine2": "Trafford Way",
+    "town": "Salford",
+    "county": "Greater Manchester",
+    "postcode": "M50 3XB",
+    "country": "United Kingdom"
+  },
+  "deleted": 0,
+  "createdAt": "2023-09-01T10:00:00Z",
+  "updatedAt": "2025-06-15T09:30:00Z"
+}

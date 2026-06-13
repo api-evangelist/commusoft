@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/commusoft/json-schema/property-details.json",
+  "title": "PropertyDetails",
+  "description": "Property-specific details associated with a Commusoft customer record",
+  "type": "object",
+  "properties": {
+    "propertyType": {
+      "type": "string",
+      "description": "Type of property (residential, commercial, etc.)"
+    },
+    "numberOfBedrooms": {
+      "type": "integer",
+      "description": "Number of bedrooms"
+    },
+    "yearBuilt": {
+      "type": "integer",
+      "description": "Year the property was built"
+    },
+    "boilerMake": {
+      "type": "string",
+      "description": "Make of the boiler installed at the property"
+    },
+    "boilerModel": {
+      "type": "string",
+      "description": "Model of the boiler installed at the property"
+    }
+  }
+}

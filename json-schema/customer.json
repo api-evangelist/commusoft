@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/commusoft/json-schema/customer.json",
+  "title": "Customer",
+  "description": "A customer record in the Commusoft field service management platform",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Internal numeric ID",
+      "readOnly": true
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Universally unique identifier for the customer",
+      "readOnly": true
+    },
+    "title": {
+      "type": "string",
+      "description": "Title (Mr, Mrs, Dr, etc.)"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "Customer first name"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Customer last name"
+    },
+    "companyName": {
+      "type": "string",
+      "description": "Company name for business customers"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Primary email address"
+    },
+    "telephone": {
+      "type": "string",
+      "description": "Primary telephone number"
+    },
+    "mobile": {
+      "type": "string",
+      "description": "Mobile telephone number"
+    },
+    "address": {
+      "$ref": "address.json"
+    },
+    "propertyDetails": {
+      "$ref": "property-details.json"
+    },
+    "accountingSettings": {
+      "$ref": "accounting-settings.json"
+    },
+    "deleted": {
+      "type": "integer",
+      "enum": [0, 1],
+      "description": "Soft-delete flag; 1 indicates the record has been deleted",
+      "readOnly": true
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    }
+  },
+  "required": ["uuid", "lastName"]
+}

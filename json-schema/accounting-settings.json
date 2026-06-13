@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/commusoft/json-schema/accounting-settings.json",
+  "title": "AccountingSettings",
+  "description": "Accounting and financial settings for a Commusoft customer, supporting integration with QuickBooks, Xero, and Sage",
+  "type": "object",
+  "properties": {
+    "accountingReference": {
+      "type": "string",
+      "description": "External accounting system reference code"
+    },
+    "vatNumber": {
+      "type": "string",
+      "description": "VAT registration number"
+    },
+    "paymentTerms": {
+      "type": "integer",
+      "description": "Payment terms in days"
+    }
+  }
+}

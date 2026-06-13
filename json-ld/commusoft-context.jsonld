@@ -1,0 +1,82 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "commusoft": "https://api-evangelist.github.io/commusoft/vocabulary/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Customer": "schema:Person",
+    "Supplier": "schema:Organization",
+    "Contact": "schema:ContactPoint",
+    "DiaryEvent": "schema:Event",
+    "Location": "schema:Place",
+    "Invoice": "schema:Invoice",
+    "Quote": "schema:Quotation",
+    "Job": "commusoft:Job",
+    "Engineer": "commusoft:Engineer",
+    "Parts": "commusoft:Parts",
+    "ServiceHistory": "commusoft:ServiceHistory",
+
+    "uuid": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "firstName": "schema:givenName",
+    "lastName": "schema:familyName",
+    "companyName": "schema:legalName",
+    "email": "schema:email",
+    "telephone": "schema:telephone",
+    "mobile": "schema:telephone",
+    "title": "schema:honorificPrefix",
+
+    "address": "schema:address",
+    "addressLine1": "schema:streetAddress",
+    "addressLine2": "commusoft:addressLine2",
+    "town": "schema:addressLocality",
+    "county": "schema:addressRegion",
+    "postcode": "schema:postalCode",
+    "country": "schema:addressCountry",
+
+    "propertyDetails": "commusoft:propertyDetails",
+    "propertyType": "commusoft:propertyType",
+    "numberOfBedrooms": "commusoft:numberOfBedrooms",
+    "yearBuilt": "schema:dateCreated",
+    "boilerMake": "commusoft:boilerMake",
+    "boilerModel": "commusoft:boilerModel",
+
+    "accountingSettings": "commusoft:accountingSettings",
+    "accountingReference": "commusoft:accountingReference",
+    "vatNumber": "schema:vatID",
+    "paymentTerms": "commusoft:paymentTerms",
+
+    "deleted": "commusoft:softDeleted",
+
+    "startDateTime": {
+      "@id": "schema:startDate",
+      "@type": "xsd:dateTime"
+    },
+    "endDateTime": {
+      "@id": "schema:endDate",
+      "@type": "xsd:dateTime"
+    },
+    "engineerUuid": "commusoft:engineerUuid",
+    "customerUuid": "commusoft:customerUuid",
+    "jobUuid": "commusoft:jobUuid",
+    "eventType": "schema:eventStatus",
+
+    "linkedEntityType": "commusoft:linkedEntityType",
+    "linkedEntityUuid": "commusoft:linkedEntityUuid",
+
+    "role": "schema:roleName",
+    "active": "schema:isActive",
+
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

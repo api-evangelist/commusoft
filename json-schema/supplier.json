@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/commusoft/json-schema/supplier.json",
+  "title": "Supplier",
+  "description": "A supplier record in the Commusoft field service management platform",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "readOnly": true
+    },
+    "companyName": {
+      "type": "string",
+      "description": "Supplier company name"
+    },
+    "contactName": {
+      "type": "string",
+      "description": "Primary contact name at the supplier"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "telephone": {
+      "type": "string"
+    },
+    "address": {
+      "$ref": "address.json"
+    },
+    "deleted": {
+      "type": "integer",
+      "enum": [0, 1],
+      "readOnly": true
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    }
+  },
+  "required": ["companyName"]
+}

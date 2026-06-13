@@ -1,0 +1,14 @@
+{
+  "id": 5501,
+  "uuid": "f1e2d3c4-b5a6-7890-fedc-ba9876543210",
+  "title": "Annual Boiler Service",
+  "description": "Annual boiler service and gas safety check for Mr Holloway at 14 Oak Street",
+  "startDateTime": "2026-07-10T09:00:00Z",
+  "endDateTime": "2026-07-10T11:00:00Z",
+  "engineerUuid": "c9d8e7f6-a5b4-3210-cdef-abcdef012345",
+  "customerUuid": "a3b4c5d6-e7f8-1234-abcd-9876543210ab",
+  "jobUuid": "12345678-90ab-cdef-0123-456789abcdef",
+  "eventType": "service",
+  "createdAt": "2026-06-01T08:00:00Z",
+  "updatedAt": "2026-06-01T08:00:00Z"
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/commusoft/json-schema/diary-event.json",
+  "title": "DiaryEvent",
+  "description": "A calendar or scheduling diary event in Commusoft, used to schedule engineer visits and job assignments",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "readOnly": true
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the diary event"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the event"
+    },
+    "startDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Event start date and time"
+    },
+    "endDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Event end date and time"
+    },
+    "engineerUuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID of the engineer assigned to this event"
+    },
+    "customerUuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID of the related customer"
+    },
+    "jobUuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID of the related job"
+    },
+    "eventType": {
+      "type": "string",
+      "description": "Type or category of the diary event"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    }
+  },
+  "required": ["title", "startDateTime", "endDateTime"]
+}

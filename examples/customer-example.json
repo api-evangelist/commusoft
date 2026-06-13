@@ -1,0 +1,34 @@
+{
+  "id": 1042,
+  "uuid": "a3b4c5d6-e7f8-1234-abcd-9876543210ab",
+  "title": "Mr",
+  "firstName": "James",
+  "lastName": "Holloway",
+  "companyName": "",
+  "email": "james.holloway@example.com",
+  "telephone": "01234567890",
+  "mobile": "07700900123",
+  "address": {
+    "addressLine1": "14 Oak Street",
+    "addressLine2": "",
+    "town": "Manchester",
+    "county": "Greater Manchester",
+    "postcode": "M1 2AB",
+    "country": "United Kingdom"
+  },
+  "propertyDetails": {
+    "propertyType": "residential",
+    "numberOfBedrooms": 3,
+    "yearBuilt": 1987,
+    "boilerMake": "Worcester Bosch",
+    "boilerModel": "Greenstar 30i"
+  },
+  "accountingSettings": {
+    "accountingReference": "CUST-1042",
+    "vatNumber": "",
+    "paymentTerms": 30
+  },
+  "deleted": 0,
+  "createdAt": "2024-03-15T09:30:00Z",
+  "updatedAt": "2025-11-20T14:05:00Z"
+}

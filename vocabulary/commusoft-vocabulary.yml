@@ -1,0 +1,168 @@
+name: Commusoft Vocabulary
+description: >-
+  Domain vocabulary for the Commusoft field service management API, covering
+  terms used across job management, customer records, scheduling, invoicing,
+  and trades business operations.
+url: https://raw.githubusercontent.com/api-evangelist/commusoft/refs/heads/main/vocabulary/commusoft-vocabulary.yml
+version: "1.0.0"
+created: "2026-06-13"
+modified: "2026-06-13"
+
+terms:
+  - term: Customer
+    definition: >-
+      An individual or business that has engaged a trades contractor for
+      services. Customers have addresses, property details, and accounting
+      settings. Commusoft uses soft-delete on customer records.
+    relatedTerms:
+      - Contact
+      - PropertyDetails
+      - AccountingSettings
+
+  - term: Supplier
+    definition: >-
+      A company or individual that supplies parts, materials, or equipment
+      to a trades contractor. Suppliers have contact details and addresses.
+    relatedTerms:
+      - Contact
+      - Parts
+
+  - term: Contact
+    definition: >-
+      A named individual associated with a Customer or Supplier, holding
+      contact details such as email, telephone, and mobile.
+    relatedTerms:
+      - Customer
+      - Supplier
+
+  - term: DiaryEvent
+    definition: >-
+      A scheduled calendar entry representing an engineer visit, job
+      appointment, or other time-blocked activity. Diary events link
+      engineers, customers, and jobs.
+    relatedTerms:
+      - Engineer
+      - Job
+      - Customer
+
+  - term: Engineer
+    definition: >-
+      A field technician or tradesperson who carries out jobs at customer
+      premises. Engineers are assigned to diary events and jobs.
+    relatedTerms:
+      - DiaryEvent
+      - Job
+
+  - term: Job
+    definition: >-
+      A work order representing a task or service visit at a customer
+      property. Jobs contain service history, parts, and invoicing data.
+    relatedTerms:
+      - Customer
+      - Engineer
+      - DiaryEvent
+      - Invoice
+      - Quote
+
+  - term: Quote
+    definition: >-
+      A formal estimate of cost provided to a customer before work begins.
+      Quotes can be converted to jobs and invoices.
+    relatedTerms:
+      - Job
+      - Customer
+      - Invoice
+
+  - term: Invoice
+    definition: >-
+      A billing document issued to a customer for completed work. Integrates
+      with accounting systems such as QuickBooks, Xero, and Sage.
+    relatedTerms:
+      - Job
+      - Customer
+      - Quote
+
+  - term: Parts
+    definition: >-
+      Physical components, materials, or equipment used during a job.
+      Parts are sourced from suppliers and tracked against jobs.
+    relatedTerms:
+      - Job
+      - Supplier
+
+  - term: ServiceHistory
+    definition: >-
+      A log of all past jobs, visits, and maintenance performed at a
+      customer property, providing a full audit trail of service activity.
+    relatedTerms:
+      - Job
+      - Customer
+
+  - term: UUID
+    definition: >-
+      Universally Unique Identifier used to identify records across the
+      Commusoft API. All resources are identified and referenced by UUID.
+    relatedTerms:
+      - Customer
+      - Supplier
+      - Job
+      - DiaryEvent
+
+  - term: SoftDelete
+    definition: >-
+      Commusoft's deletion pattern where records are marked as deleted
+      (Deleted=1) rather than permanently removed from the database,
+      preserving data integrity and history.
+    relatedTerms:
+      - Customer
+      - Supplier
+
+  - term: Title
+    definition: >-
+      A configurable salutation prefix for customer and contact records,
+      such as Mr, Mrs, Ms, Miss, Dr, or Prof.
+    relatedTerms:
+      - Customer
+      - Contact
+
+  - term: Location
+    definition: >-
+      A site or premises record that can be associated with jobs and
+      customer property details.
+    relatedTerms:
+      - Job
+      - Customer
+
+  - term: PropertyDetails
+    definition: >-
+      Metadata about a customer's property including type, number of
+      bedrooms, year built, and installed equipment such as boilers.
+    relatedTerms:
+      - Customer
+
+  - term: AccountingSettings
+    definition: >-
+      Financial configuration for a customer record including external
+      accounting reference codes, VAT numbers, and payment terms.
+      Supports integration with QuickBooks, Xero, and Sage.
+    relatedTerms:
+      - Customer
+      - Invoice
+
+  - term: ApiToken
+    definition: >-
+      An authentication credential obtained via the /getToken endpoint.
+      Must be passed in the X-Auth-Token header or as a token query
+      parameter with every API request.
+    relatedTerms:
+      - Authentication
+
+  - term: FieldServiceManagement
+    definition: >-
+      The discipline of coordinating field-based technicians and engineers
+      to deliver on-site services. Commusoft's platform is purpose-built
+      for field service management in the trades industry.
+    relatedTerms:
+      - Job
+      - Engineer
+      - DiaryEvent
