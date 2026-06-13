@@ -1,0 +1,35 @@
+name: Commusoft API Rate Limits
+description: >-
+  Commusoft's public API rate limit policies are not explicitly published in
+  their public documentation. The API is documented on Apiary and is used
+  to power integrations with Zapier, QuickBooks, Xero, Stripe, and other
+  third-party platforms. Rate limit details should be confirmed directly with
+  Commusoft support or obtained through the developer onboarding process.
+specificationVersion: "0.1"
+url: https://commusoft.docs.apiary.io/
+rateLimits:
+  - name: API Rate Limit
+    description: >-
+      Commusoft does not publicly document specific rate limit thresholds for
+      their REST API. Limits are expected to be enforced at the account or
+      API key level to ensure platform stability. Developers integrating via
+      Zapier or direct API access should implement retry logic with exponential
+      backoff when encountering 429 Too Many Requests responses.
+    type: account
+    publiclyDocumented: false
+    httpStatusOnExceeded: 429
+    recommendedPractice: >-
+      Implement exponential backoff and retry logic when 429 responses are
+      received. Cache frequently-accessed resources where possible to reduce
+      API call volume. Batch operations where the API permits.
+    contactForLimits: support@commusoft.com
+notes:
+  - >-
+    Commusoft's status page at https://status.commusoft.com/public-api
+    provides real-time API health monitoring and incident reporting.
+  - >-
+    Integration partners such as Zapier manage their own rate limiting
+    when accessing the Commusoft API through their platform.
+  - >-
+    For production integrations, contact Commusoft support to confirm
+    current rate limit policies and any partner-tier limits available.

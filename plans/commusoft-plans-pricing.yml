@@ -1,0 +1,97 @@
+name: Commusoft Plans and Pricing
+description: >-
+  Commusoft offers a modular pricing structure built around its core Jobs
+  platform with optional add-on modules. Pricing is not publicly listed and
+  requires contact with the sales team. License types are flexible to
+  accommodate seasonal and subcontractor workforce needs.
+specificationVersion: "0.1"
+url: https://www.commusoft.com/en-us/plans/
+plans:
+  - name: Commusoft Jobs
+    description: >-
+      The core all-in-one field service management platform for trades
+      businesses. Includes drag-and-drop dispatching, automated job costing,
+      SLA and PPM management, offline mobile app with custom digital forms,
+      multi-option proposal building, real-time GPS vehicle tracking, and 40+
+      standard dashboards. Minimum 6 staff members.
+    url: https://www.commusoft.com/en-us/plans/
+    pricingModel: per-user
+    billingCycle: annual
+    customPricing: true
+    contactRequired: true
+    features:
+      - Drag-and-drop job dispatching
+      - Automated job costing
+      - SLA and PPM management
+      - Offline mobile app
+      - Custom digital forms
+      - Multi-option proposal building
+      - Real-time GPS vehicle tracking
+      - 40+ standard dashboards
+      - QuickBooks Online integration
+      - Xero integration
+      - Stripe payment integration
+  - name: Fleet+
+    description: >-
+      Add-on module providing live GPS tracking and driver behavior alerts
+      beyond the standard GPS included in the core platform.
+    url: https://www.commusoft.com/en-us/plans/
+    pricingModel: add-on
+    customPricing: true
+    contactRequired: true
+    features:
+      - Live GPS tracking
+      - Driver behavior alerts
+  - name: Sales+
+    description: >-
+      Add-on module providing advanced sales pipeline management and automated
+      follow-up workflows for field service sales teams.
+    url: https://www.commusoft.com/en-us/plans/
+    pricingModel: add-on
+    customPricing: true
+    contactRequired: true
+    features:
+      - Advanced pipeline management
+      - Automated follow-ups
+  - name: Analytics+
+    description: >-
+      Add-on module providing custom dashboards and advanced business
+      intelligence reporting beyond the standard 40+ dashboards. Coming soon.
+    url: https://www.commusoft.com/en-us/plans/
+    pricingModel: add-on
+    customPricing: true
+    contactRequired: true
+    comingSoon: true
+    features:
+      - Custom dashboards
+      - Advanced business insights
+  - name: AI:den+
+    description: >-
+      AI-powered workflow automation add-on for field service businesses.
+      Coming soon.
+    url: https://www.commusoft.com/en-us/plans/
+    pricingModel: add-on
+    customPricing: true
+    contactRequired: true
+    comingSoon: true
+    features:
+      - AI-powered workflow automation
+licenseTypes:
+  - name: Contracted
+    description: >-
+      12-month committed license with locked-in pricing. Renews annually.
+      Recommended for core full-time staff.
+    term: 12-month
+    autoRenew: true
+  - name: Monthly Rolling
+    description: >-
+      Flexible monthly licenses added on top of contracted plans. Suitable
+      for seasonal workers or temporary staff increases.
+    term: monthly
+    autoRenew: false
+  - name: Daily
+    description: >-
+      Daily licenses billed monthly based on days used. Ideal for
+      subcontractors who work on an ad-hoc basis.
+    term: daily
+    billedMonthly: true

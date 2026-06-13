@@ -1,0 +1,81 @@
+name: Commusoft FinOps
+description: >-
+  FinOps Framework FOCUS-aligned cost and usage analysis for Commusoft field
+  service management platform subscriptions. Commusoft uses a per-user
+  licensing model with contracted, rolling monthly, and daily license tiers.
+  API access is bundled with the core platform subscription rather than
+  charged separately by consumption. Cost optimization focuses on license
+  type selection, user count management, and add-on module adoption.
+specificationVersion: "1.0"
+url: https://www.commusoft.com/en-us/plans/
+focusVersion: "1.0"
+provider: Commusoft
+productFamily: Field Service Management
+costModel: subscription
+billingDimensions:
+  - name: Licensed Users
+    description: >-
+      Per-user licensing is the primary cost driver for Commusoft. Users are
+      counted against contracted, monthly rolling, or daily license buckets.
+    unit: user
+    billingCycle: annual-or-monthly
+    notes: Minimum 6 users for the core Jobs platform.
+  - name: Contracted Licenses
+    description: >-
+      12-month committed licenses with locked-in per-user pricing. Lowest
+      effective cost per user for permanent full-time staff.
+    unit: user/year
+    commitmentType: committed
+    term: 12-month
+  - name: Monthly Rolling Licenses
+    description: >-
+      Flexible monthly licenses added above the contracted base. Higher
+      effective per-user cost than contracted, suited for seasonal workers.
+    unit: user/month
+    commitmentType: on-demand
+    term: monthly
+  - name: Daily Licenses
+    description: >-
+      Daily licenses billed monthly based on actual days used. Highest
+      effective per-user cost, optimized for subcontractors and ad-hoc workers.
+    unit: user/day
+    commitmentType: on-demand
+    term: daily
+  - name: Add-on Modules
+    description: >-
+      Optional premium modules (Fleet+, Sales+, Analytics+, AI:den+, SMS+)
+      billed as incremental subscriptions on top of the core platform fee.
+    unit: module/account
+    billingCycle: annual-or-monthly
+costOptimization:
+  - name: License Mix Optimization
+    description: >-
+      Maximize contracted licenses for permanent staff to lock in the lowest
+      per-user rate. Use monthly rolling licenses for seasonal demand spikes
+      and daily licenses only for true subcontractor or casual use cases.
+    potentialSavings: high
+  - name: Add-on Module Audit
+    description: >-
+      Periodically audit active add-on modules (Fleet+, Sales+) against
+      actual usage to identify unused subscriptions that can be removed.
+    potentialSavings: medium
+  - name: User Count Right-sizing
+    description: >-
+      At annual renewal, reconcile contracted user count against actual active
+      users to avoid paying for unused seats over the next commitment term.
+    potentialSavings: medium
+  - name: API Integration Efficiency
+    description: >-
+      API access is bundled with the platform subscription at no additional
+      cost. Optimize integration workflows via Zapier or direct API to reduce
+      manual data entry labor costs, improving ROI on the subscription.
+    potentialSavings: operational
+usage:
+  apiCost: bundled
+  apiCostDescription: >-
+    Commusoft API access is included with the platform subscription. There
+    are no separate API call charges, per-request fees, or consumption-based
+    billing for API usage. Cost management focuses on the subscription tier
+    and user count rather than API consumption metrics.
+  dataExportCost: bundled
+  supportCost: included
