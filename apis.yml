@@ -54,6 +54,10 @@ apis:
       - type: StatusPage
         url: https://status.commusoft.com/public-api
 common:
+  - type: DomainSecurity
+    url: security/commusoft-domain-security.yml
+  - type: Authentication
+    url: authentication/commusoft-authentication.yml
   - type: Website
     url: https://www.commusoft.com/
   - type: Documentation

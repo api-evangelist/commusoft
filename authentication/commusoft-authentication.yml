@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/commusoft-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: ApiTokenHeader
+  type: apiKey
+  in: header
+  parameter: X-Auth-Token
+  description: API token obtained from the /getToken endpoint
+  sources:
+  - openapi/commusoft-api-openapi.yml
+- name: ApiTokenQuery
+  type: apiKey
+  in: query
+  parameter: token
+  description: API token passed as a query parameter
+  sources:
+  - openapi/commusoft-api-openapi.yml
