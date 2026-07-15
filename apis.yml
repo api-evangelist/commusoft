@@ -54,6 +54,8 @@ apis:
       - type: StatusPage
         url: https://status.commusoft.com/public-api
 common:
+  - type: AgenticAccess
+    url: agentic-access/commusoft-agentic-access.yml
   - type: DomainSecurity
     url: security/commusoft-domain-security.yml
   - type: Authentication
