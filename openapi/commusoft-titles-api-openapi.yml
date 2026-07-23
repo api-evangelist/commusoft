@@ -1,0 +1,167 @@
+openapi: 3.0.3
+info:
+  title: Commusoft Authentication Titles API
+  description: The Commusoft API is a RESTful JSON-based API designed to allow third parties to integrate products and applications with Commusoft's field service management platform. It enables programmatic management of jobs, customers, engineers, quotes, invoices, parts, and service histories for trades businesses including HVAC, plumbing, electrical, and building maintenance contractors. The API supports integrations with accounting tools (QuickBooks, Xero, Sage), payment processors (Stripe, GoCardless), and workflow automation platforms (Zapier).
+  version: 1.0.0
+  contact:
+    url: https://www.commusoft.com/
+  x-api-id: commusoft-api
+  x-audience: external-partner
+servers:
+- url: https://api.commusoft.com/api/v1
+  description: Commusoft production API server
+security:
+- ApiTokenHeader: []
+- ApiTokenQuery: []
+tags:
+- name: Titles
+  description: Manage title settings (Mr, Mrs, Dr, etc.)
+paths:
+  /titles:
+    get:
+      operationId: listTitles
+      summary: List Titles
+      description: Retrieve the list of available title settings (Mr, Mrs, Dr, etc.).
+      tags:
+      - Titles
+      responses:
+        '200':
+          description: List of titles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Title'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createTitle
+      summary: Create Title
+      description: Add a new title setting.
+      tags:
+      - Titles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TitleInput'
+      responses:
+        '201':
+          description: Title created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Title'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /titles/{uuid}:
+    put:
+      operationId: updateTitle
+      summary: Update Title
+      description: Edit an existing title setting.
+      tags:
+      - Titles
+      parameters:
+      - $ref: '#/components/parameters/UuidPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TitleInput'
+      responses:
+        '200':
+          description: Title updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Title'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteTitle
+      summary: Delete Title
+      description: Remove a title setting.
+      tags:
+      - Titles
+      parameters:
+      - $ref: '#/components/parameters/UuidPath'
+      responses:
+        '200':
+          description: Title deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    TitleInput:
+      type: object
+      required:
+      - name
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The title value
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
+    Title:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          description: The title value (e.g. Mr, Mrs, Dr, Miss, Ms)
+  responses:
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    UuidPath:
+      name: uuid
+      in: path
+      required: true
+      description: Unique identifier (UUID) of the record
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    ApiTokenHeader:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: API token obtained from the /getToken endpoint
+    ApiTokenQuery:
+      type: apiKey
+      in: query
+      name: token
+      description: API token passed as a query parameter

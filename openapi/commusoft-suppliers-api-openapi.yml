@@ -1,0 +1,247 @@
+openapi: 3.0.3
+info:
+  title: Commusoft Authentication Suppliers API
+  description: The Commusoft API is a RESTful JSON-based API designed to allow third parties to integrate products and applications with Commusoft's field service management platform. It enables programmatic management of jobs, customers, engineers, quotes, invoices, parts, and service histories for trades businesses including HVAC, plumbing, electrical, and building maintenance contractors. The API supports integrations with accounting tools (QuickBooks, Xero, Sage), payment processors (Stripe, GoCardless), and workflow automation platforms (Zapier).
+  version: 1.0.0
+  contact:
+    url: https://www.commusoft.com/
+  x-api-id: commusoft-api
+  x-audience: external-partner
+servers:
+- url: https://api.commusoft.com/api/v1
+  description: Commusoft production API server
+security:
+- ApiTokenHeader: []
+- ApiTokenQuery: []
+tags:
+- name: Suppliers
+  description: Manage supplier records and contact details
+paths:
+  /suppliers:
+    get:
+      operationId: listSuppliers
+      summary: List Suppliers
+      description: Retrieve a list of supplier records.
+      tags:
+      - Suppliers
+      responses:
+        '200':
+          description: List of suppliers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Supplier'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createSupplier
+      summary: Create Supplier
+      description: Insert a new supplier record into the system.
+      tags:
+      - Suppliers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplierInput'
+      responses:
+        '201':
+          description: Supplier created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /suppliers/{uuid}:
+    get:
+      operationId: getSupplier
+      summary: Get Supplier
+      description: Retrieve a specific supplier record by UUID.
+      tags:
+      - Suppliers
+      parameters:
+      - $ref: '#/components/parameters/UuidPath'
+      responses:
+        '200':
+          description: Supplier record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateSupplier
+      summary: Update Supplier
+      description: Edit an existing supplier record identified by UUID.
+      tags:
+      - Suppliers
+      parameters:
+      - $ref: '#/components/parameters/UuidPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplierInput'
+      responses:
+        '200':
+          description: Supplier updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteSupplier
+      summary: Delete Supplier
+      description: Soft-delete a supplier record.
+      tags:
+      - Suppliers
+      parameters:
+      - $ref: '#/components/parameters/UuidPath'
+      responses:
+        '200':
+          description: Supplier soft-deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
+    Supplier:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        companyName:
+          type: string
+          description: Supplier company name
+        contactName:
+          type: string
+          description: Primary contact name at the supplier
+        email:
+          type: string
+          format: email
+        telephone:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
+          readOnly: true
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+    SupplierInput:
+      type: object
+      required:
+      - companyName
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        companyName:
+          type: string
+        contactName:
+          type: string
+        email:
+          type: string
+          format: email
+        telephone:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+          description: First line of the address
+        addressLine2:
+          type: string
+          description: Second line of the address
+        town:
+          type: string
+          description: Town or city
+        county:
+          type: string
+          description: County or region
+        postcode:
+          type: string
+          description: Postcode or zip code
+        country:
+          type: string
+          description: Country
+  responses:
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    UuidPath:
+      name: uuid
+      in: path
+      required: true
+      description: Unique identifier (UUID) of the record
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    ApiTokenHeader:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: API token obtained from the /getToken endpoint
+    ApiTokenQuery:
+      type: apiKey
+      in: query
+      name: token
+      description: API token passed as a query parameter

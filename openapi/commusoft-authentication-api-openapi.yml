@@ -1,0 +1,82 @@
+openapi: 3.0.3
+info:
+  title: Commusoft Authentication API
+  description: The Commusoft API is a RESTful JSON-based API designed to allow third parties to integrate products and applications with Commusoft's field service management platform. It enables programmatic management of jobs, customers, engineers, quotes, invoices, parts, and service histories for trades businesses including HVAC, plumbing, electrical, and building maintenance contractors. The API supports integrations with accounting tools (QuickBooks, Xero, Sage), payment processors (Stripe, GoCardless), and workflow automation platforms (Zapier).
+  version: 1.0.0
+  contact:
+    url: https://www.commusoft.com/
+  x-api-id: commusoft-api
+  x-audience: external-partner
+servers:
+- url: https://api.commusoft.com/api/v1
+  description: Commusoft production API server
+security:
+- ApiTokenHeader: []
+- ApiTokenQuery: []
+tags:
+- name: Authentication
+  description: Obtain API access tokens
+paths:
+  /getToken:
+    post:
+      operationId: getToken
+      summary: Get API Token
+      description: Obtain an API access token. You will need to request an API key from Commusoft before you can use the API. Provide your clientId, username, password, and applicationId to receive a token for subsequent requests.
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+            example:
+              clientId: your-client-id
+              username: user@example.com
+              password: your-password
+              applicationId: your-application-id
+      responses:
+        '200':
+          description: API token returned as plain text
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: abc123token
+        '401':
+          description: Invalid credentials
+components:
+  schemas:
+    TokenRequest:
+      type: object
+      required:
+      - clientId
+      - username
+      - password
+      - applicationId
+      properties:
+        clientId:
+          type: string
+          description: Your Commusoft client identifier
+        username:
+          type: string
+          description: API user username
+        password:
+          type: string
+          format: password
+          description: API user password
+        applicationId:
+          type: string
+          description: Application identifier issued by Commusoft
+  securitySchemes:
+    ApiTokenHeader:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: API token obtained from the /getToken endpoint
+    ApiTokenQuery:
+      type: apiKey
+      in: query
+      name: token
+      description: API token passed as a query parameter
