@@ -1,0 +1,1157 @@
+openapi: 3.0.3
+info:
+  title: Commusoft API
+  description: >-
+    The Commusoft API is a RESTful JSON-based API designed to allow third parties
+    to integrate products and applications with Commusoft's field service management
+    platform. It enables programmatic management of jobs, customers, engineers,
+    quotes, invoices, parts, and service histories for trades businesses including
+    HVAC, plumbing, electrical, and building maintenance contractors. The API supports
+    integrations with accounting tools (QuickBooks, Xero, Sage), payment processors
+    (Stripe, GoCardless), and workflow automation platforms (Zapier).
+  version: 1.0.0
+  contact:
+    url: https://www.commusoft.com/
+  x-api-id: commusoft-api
+  x-audience: external-partner
+servers:
+  - url: https://api.commusoft.com/api/v1
+    description: Commusoft production API server
+
+security:
+  - ApiTokenHeader: []
+  - ApiTokenQuery: []
+
+tags:
+  - name: Authentication
+    description: Obtain API access tokens
+  - name: Customers
+    description: Manage customer records including addresses, contacts, and property details
+  - name: Suppliers
+    description: Manage supplier records and contact details
+  - name: Contacts
+    description: Manage contacts linked to customers or suppliers
+  - name: Diary Events
+    description: Manage calendar and scheduling diary events
+  - name: Users
+    description: Retrieve user records
+  - name: Titles
+    description: Manage title settings (Mr, Mrs, Dr, etc.)
+  - name: Locations
+    description: Manage location/site records
+
+paths:
+
+  /getToken:
+    post:
+      operationId: getToken
+      summary: Get API Token
+      description: >-
+        Obtain an API access token. You will need to request an API key from
+        Commusoft before you can use the API. Provide your clientId, username,
+        password, and applicationId to receive a token for subsequent requests.
+      tags:
+        - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+            example:
+              clientId: "your-client-id"
+              username: "user@example.com"
+              password: "your-password"
+              applicationId: "your-application-id"
+      responses:
+        '200':
+          description: API token returned as plain text
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "abc123token"
+        '401':
+          description: Invalid credentials
+
+  /customers:
+    get:
+      operationId: listCustomers
+      summary: List Customers
+      description: Retrieve a list of customers from the Commusoft system.
+      tags:
+        - Customers
+      parameters:
+        - $ref: '#/components/parameters/UuidParam'
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createCustomer
+      summary: Create Customer
+      description: Add a new customer record to the Commusoft system.
+      tags:
+        - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerInput'
+      responses:
+        '201':
+          description: Customer created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /customers/{uuid}:
+    get:
+      operationId: getCustomer
+      summary: Get Customer
+      description: Retrieve a specific customer record by UUID.
+      tags:
+        - Customers
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      responses:
+        '200':
+          description: Customer record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateCustomer
+      summary: Update Customer
+      description: Edit an existing customer record identified by UUID.
+      tags:
+        - Customers
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerInput'
+      responses:
+        '200':
+          description: Customer updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteCustomer
+      summary: Delete Customer
+      description: >-
+        Soft-delete a customer record. Commusoft never permanently deletes a
+        customer; instead the record's Deleted field is set to 1.
+      tags:
+        - Customers
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      responses:
+        '200':
+          description: Customer soft-deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /suppliers:
+    get:
+      operationId: listSuppliers
+      summary: List Suppliers
+      description: Retrieve a list of supplier records.
+      tags:
+        - Suppliers
+      responses:
+        '200':
+          description: List of suppliers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Supplier'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createSupplier
+      summary: Create Supplier
+      description: Insert a new supplier record into the system.
+      tags:
+        - Suppliers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplierInput'
+      responses:
+        '201':
+          description: Supplier created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /suppliers/{uuid}:
+    get:
+      operationId: getSupplier
+      summary: Get Supplier
+      description: Retrieve a specific supplier record by UUID.
+      tags:
+        - Suppliers
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      responses:
+        '200':
+          description: Supplier record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateSupplier
+      summary: Update Supplier
+      description: Edit an existing supplier record identified by UUID.
+      tags:
+        - Suppliers
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplierInput'
+      responses:
+        '200':
+          description: Supplier updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteSupplier
+      summary: Delete Supplier
+      description: Soft-delete a supplier record.
+      tags:
+        - Suppliers
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      responses:
+        '200':
+          description: Supplier soft-deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /contacts:
+    get:
+      operationId: listContacts
+      summary: List Contacts
+      description: Retrieve contacts linked to customers or suppliers.
+      tags:
+        - Contacts
+      responses:
+        '200':
+          description: List of contacts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createContact
+      summary: Create Contact
+      description: Add a new contact linked to a customer or supplier.
+      tags:
+        - Contacts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactInput'
+      responses:
+        '201':
+          description: Contact created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /contacts/{uuid}:
+    get:
+      operationId: getContact
+      summary: Get Contact
+      description: Retrieve a specific contact record by UUID.
+      tags:
+        - Contacts
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      responses:
+        '200':
+          description: Contact record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /diary:
+    get:
+      operationId: listDiaryEvents
+      summary: List Diary Events
+      description: Retrieve calendar and scheduling diary events.
+      tags:
+        - Diary Events
+      responses:
+        '200':
+          description: List of diary events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DiaryEvent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createDiaryEvent
+      summary: Create Diary Event
+      description: Add a new diary event entry.
+      tags:
+        - Diary Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiaryEventInput'
+      responses:
+        '201':
+          description: Diary event created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiaryEvent'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /diary/{uuid}:
+    get:
+      operationId: getDiaryEvent
+      summary: Get Diary Event
+      description: Retrieve a specific diary event by UUID.
+      tags:
+        - Diary Events
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      responses:
+        '200':
+          description: Diary event record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiaryEvent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateDiaryEvent
+      summary: Update Diary Event
+      description: Edit an existing diary event identified by UUID.
+      tags:
+        - Diary Events
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiaryEventInput'
+      responses:
+        '200':
+          description: Diary event updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiaryEvent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /users/{uuid}:
+    get:
+      operationId: getUser
+      summary: Get User
+      description: Retrieve a specific user record by UUID.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      responses:
+        '200':
+          description: User record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /titles:
+    get:
+      operationId: listTitles
+      summary: List Titles
+      description: Retrieve the list of available title settings (Mr, Mrs, Dr, etc.).
+      tags:
+        - Titles
+      responses:
+        '200':
+          description: List of titles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Title'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createTitle
+      summary: Create Title
+      description: Add a new title setting.
+      tags:
+        - Titles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TitleInput'
+      responses:
+        '201':
+          description: Title created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Title'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /titles/{uuid}:
+    put:
+      operationId: updateTitle
+      summary: Update Title
+      description: Edit an existing title setting.
+      tags:
+        - Titles
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TitleInput'
+      responses:
+        '200':
+          description: Title updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Title'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteTitle
+      summary: Delete Title
+      description: Remove a title setting.
+      tags:
+        - Titles
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      responses:
+        '200':
+          description: Title deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /locations:
+    get:
+      operationId: listLocations
+      summary: List Locations
+      description: Retrieve location/site records.
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: List of locations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createLocation
+      summary: Create Location
+      description: Add a new location record.
+      tags:
+        - Locations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationInput'
+      responses:
+        '201':
+          description: Location created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /locations/{uuid}:
+    get:
+      operationId: getLocation
+      summary: Get Location
+      description: Retrieve a specific location record by UUID.
+      tags:
+        - Locations
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      responses:
+        '200':
+          description: Location record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateLocation
+      summary: Update Location
+      description: Edit an existing location record.
+      tags:
+        - Locations
+      parameters:
+        - $ref: '#/components/parameters/UuidPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationInput'
+      responses:
+        '200':
+          description: Location updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  securitySchemes:
+    ApiTokenHeader:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+      description: API token obtained from the /getToken endpoint
+    ApiTokenQuery:
+      type: apiKey
+      in: query
+      name: token
+      description: API token passed as a query parameter
+
+  parameters:
+    UuidPath:
+      name: uuid
+      in: path
+      required: true
+      description: Unique identifier (UUID) of the record
+      schema:
+        type: string
+        format: uuid
+    UuidParam:
+      name: uuid
+      in: query
+      required: false
+      description: Filter by UUID
+      schema:
+        type: string
+        format: uuid
+
+  responses:
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
+
+    TokenRequest:
+      type: object
+      required:
+        - clientId
+        - username
+        - password
+        - applicationId
+      properties:
+        clientId:
+          type: string
+          description: Your Commusoft client identifier
+        username:
+          type: string
+          description: API user username
+        password:
+          type: string
+          format: password
+          description: API user password
+        applicationId:
+          type: string
+          description: Application identifier issued by Commusoft
+
+    Address:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+          description: First line of the address
+        addressLine2:
+          type: string
+          description: Second line of the address
+        town:
+          type: string
+          description: Town or city
+        county:
+          type: string
+          description: County or region
+        postcode:
+          type: string
+          description: Postcode or zip code
+        country:
+          type: string
+          description: Country
+
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Internal numeric ID
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          description: Universally unique identifier for the customer
+          readOnly: true
+        title:
+          type: string
+          description: Title (Mr, Mrs, Dr, etc.)
+        firstName:
+          type: string
+          description: Customer first name
+        lastName:
+          type: string
+          description: Customer last name
+        companyName:
+          type: string
+          description: Company name for business customers
+        email:
+          type: string
+          format: email
+          description: Primary email address
+        telephone:
+          type: string
+          description: Primary telephone number
+        mobile:
+          type: string
+          description: Mobile telephone number
+        address:
+          $ref: '#/components/schemas/Address'
+        propertyDetails:
+          $ref: '#/components/schemas/PropertyDetails'
+        accountingSettings:
+          $ref: '#/components/schemas/AccountingSettings'
+        deleted:
+          type: integer
+          enum: [0, 1]
+          description: Soft-delete flag; 1 indicates the record has been deleted
+          readOnly: true
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+
+    CustomerInput:
+      type: object
+      required:
+        - uuid
+        - lastName
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          description: UUID for the new customer record
+        title:
+          type: string
+          description: Title (Mr, Mrs, Dr, etc.)
+        firstName:
+          type: string
+          description: Customer first name
+        lastName:
+          type: string
+          description: Customer last name
+        companyName:
+          type: string
+          description: Company name for business customers
+        email:
+          type: string
+          format: email
+          description: Primary email address
+        telephone:
+          type: string
+          description: Primary telephone number
+        mobile:
+          type: string
+          description: Mobile telephone number
+        address:
+          $ref: '#/components/schemas/Address'
+        propertyDetails:
+          $ref: '#/components/schemas/PropertyDetails'
+        accountingSettings:
+          $ref: '#/components/schemas/AccountingSettings'
+
+    PropertyDetails:
+      type: object
+      properties:
+        propertyType:
+          type: string
+          description: Type of property (residential, commercial, etc.)
+        numberOfBedrooms:
+          type: integer
+          description: Number of bedrooms
+        yearBuilt:
+          type: integer
+          description: Year the property was built
+        boilerMake:
+          type: string
+          description: Make of the boiler installed
+        boilerModel:
+          type: string
+          description: Model of the boiler installed
+
+    AccountingSettings:
+      type: object
+      properties:
+        accountingReference:
+          type: string
+          description: External accounting system reference code
+        vatNumber:
+          type: string
+          description: VAT registration number
+        paymentTerms:
+          type: integer
+          description: Payment terms in days
+
+    Supplier:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        companyName:
+          type: string
+          description: Supplier company name
+        contactName:
+          type: string
+          description: Primary contact name at the supplier
+        email:
+          type: string
+          format: email
+        telephone:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        deleted:
+          type: integer
+          enum: [0, 1]
+          readOnly: true
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+
+    SupplierInput:
+      type: object
+      required:
+        - companyName
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        companyName:
+          type: string
+        contactName:
+          type: string
+        email:
+          type: string
+          format: email
+        telephone:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+
+    Contact:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        title:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        telephone:
+          type: string
+        mobile:
+          type: string
+        linkedEntityType:
+          type: string
+          enum: [customer, supplier]
+          description: Whether this contact is linked to a customer or supplier
+        linkedEntityUuid:
+          type: string
+          format: uuid
+          description: UUID of the linked customer or supplier
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+
+    ContactInput:
+      type: object
+      required:
+        - lastName
+        - linkedEntityType
+        - linkedEntityUuid
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        title:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        telephone:
+          type: string
+        mobile:
+          type: string
+        linkedEntityType:
+          type: string
+          enum: [customer, supplier]
+        linkedEntityUuid:
+          type: string
+          format: uuid
+
+    DiaryEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        title:
+          type: string
+          description: Title of the diary event
+        description:
+          type: string
+          description: Detailed description of the event
+        startDateTime:
+          type: string
+          format: date-time
+          description: Event start date and time
+        endDateTime:
+          type: string
+          format: date-time
+          description: Event end date and time
+        engineerUuid:
+          type: string
+          format: uuid
+          description: UUID of the engineer assigned to this event
+        customerUuid:
+          type: string
+          format: uuid
+          description: UUID of the related customer
+        jobUuid:
+          type: string
+          format: uuid
+          description: UUID of the related job
+        eventType:
+          type: string
+          description: Type/category of the diary event
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+
+    DiaryEventInput:
+      type: object
+      required:
+        - title
+        - startDateTime
+        - endDateTime
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        startDateTime:
+          type: string
+          format: date-time
+        endDateTime:
+          type: string
+          format: date-time
+        engineerUuid:
+          type: string
+          format: uuid
+        customerUuid:
+          type: string
+          format: uuid
+        jobUuid:
+          type: string
+          format: uuid
+        eventType:
+          type: string
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          description: User role within the system (admin, engineer, office, etc.)
+        active:
+          type: boolean
+          description: Whether the user account is active
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+
+    Title:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          description: The title value (e.g. Mr, Mrs, Dr, Miss, Ms)
+
+    TitleInput:
+      type: object
+      required:
+        - name
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The title value
+
+    Location:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          description: Name of the location
+        address:
+          $ref: '#/components/schemas/Address'
+        description:
+          type: string
+          description: Additional notes about the location
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+
+    LocationInput:
+      type: object
+      required:
+        - name
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        description:
+          type: string

@@ -1,0 +1,28 @@
+{
+  "provider": "commusoft",
+  "sources": [
+    "commusoft-authentication-api-openapi.yml",
+    "commusoft-contacts-api-openapi.yml",
+    "commusoft-customers-api-openapi.yml",
+    "commusoft-diary-events-api-openapi.yml",
+    "commusoft-locations-api-openapi.yml",
+    "commusoft-suppliers-api-openapi.yml",
+    "commusoft-titles-api-openapi.yml",
+    "commusoft-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "commusoft-authentication-api-openapi.yml",
+    "commusoft-contacts-api-openapi.yml",
+    "commusoft-customers-api-openapi.yml",
+    "commusoft-diary-events-api-openapi.yml",
+    "commusoft-locations-api-openapi.yml",
+    "commusoft-suppliers-api-openapi.yml",
+    "commusoft-titles-api-openapi.yml",
+    "commusoft-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
