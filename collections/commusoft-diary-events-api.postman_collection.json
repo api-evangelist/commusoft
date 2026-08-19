@@ -1,0 +1,808 @@
+{
+  "item": [
+    {
+      "id": "5c010ffb-02b7-49db-9443-ff615e495ea2",
+      "name": "Diary Events",
+      "description": {
+        "content": "Manage calendar and scheduling diary events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dbaf88c3-6e1d-465c-807c-03f3d11b9dce",
+          "name": "List Diary Events",
+          "request": {
+            "name": "List Diary Events",
+            "description": {
+              "content": "Retrieve calendar and scheduling diary events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "diary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1eee7393-3a0f-4b83-962b-2500ab59b9f7",
+              "name": "List of diary events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1496,\n    \"uuid\": \"cf0f3c8e-de05-d794-6203-89267e998a0b\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"startDateTime\": \"2016-11-22T17:51:51.654Z\",\n    \"endDateTime\": \"1975-06-07T20:51:42.746Z\",\n    \"engineerUuid\": \"d89bae4c-a624-0ffa-26d8-8c23b315c245\",\n    \"customerUuid\": \"1dfbd57f-8a04-a180-ad6c-576f09809e4c\",\n    \"jobUuid\": \"cfd0cc1f-ad3c-47af-6ea1-c71f9e797ebf\",\n    \"eventType\": \"string\",\n    \"createdAt\": \"2007-02-04T05:07:25.917Z\",\n    \"updatedAt\": \"1990-06-04T13:36:47.930Z\"\n  },\n  {\n    \"id\": 1523,\n    \"uuid\": \"146d3983-2826-8fec-2f63-31e84edf8cc8\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"startDateTime\": \"1987-05-28T13:46:39.986Z\",\n    \"endDateTime\": \"1975-08-02T01:32:03.902Z\",\n    \"engineerUuid\": \"a2ecff69-5c29-cea6-5386-b25550e3fba4\",\n    \"customerUuid\": \"2fc33243-9946-5719-0f5e-9e9ebc99901b\",\n    \"jobUuid\": \"c25b0632-d1ca-fb2f-39b0-a89b6931ddc6\",\n    \"eventType\": \"string\",\n    \"createdAt\": \"2024-10-03T15:02:30.159Z\",\n    \"updatedAt\": \"1950-11-13T02:27:33.528Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6fa20f2-cce6-4643-bfc6-714bc0fdd183",
+              "name": "Authentication token missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 5469\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a446db1-898e-4196-880e-a36f244ff128",
+          "name": "Create Diary Event",
+          "request": {
+            "name": "Create Diary Event",
+            "description": {
+              "content": "Add a new diary event entry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "diary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"startDateTime\": \"<dateTime>\",\n  \"endDateTime\": \"<dateTime>\",\n  \"uuid\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"engineerUuid\": \"<uuid>\",\n  \"customerUuid\": \"<uuid>\",\n  \"jobUuid\": \"<uuid>\",\n  \"eventType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "39299bc6-bde3-4dcc-b602-056dde4e8838",
+              "name": "Diary event created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"startDateTime\": \"<dateTime>\",\n  \"endDateTime\": \"<dateTime>\",\n  \"uuid\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"engineerUuid\": \"<uuid>\",\n  \"customerUuid\": \"<uuid>\",\n  \"jobUuid\": \"<uuid>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3004,\n  \"uuid\": \"f22447e3-32a0-5305-9186-3f9792ac0304\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"startDateTime\": \"2012-06-20T14:24:56.919Z\",\n  \"endDateTime\": \"1981-01-14T13:52:04.536Z\",\n  \"engineerUuid\": \"e7d5de7b-9ee8-8e36-1732-53dfaf5995f9\",\n  \"customerUuid\": \"7a69a34d-7be1-71c1-0987-490e56b733e3\",\n  \"jobUuid\": \"5b66452f-f156-a948-5913-ad82f2df03b5\",\n  \"eventType\": \"string\",\n  \"createdAt\": \"2017-01-03T14:06:31.507Z\",\n  \"updatedAt\": \"1967-10-15T19:50:20.413Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fe5980a-65c4-4906-a91f-1952f814820d",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"startDateTime\": \"<dateTime>\",\n  \"endDateTime\": \"<dateTime>\",\n  \"uuid\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"engineerUuid\": \"<uuid>\",\n  \"customerUuid\": \"<uuid>\",\n  \"jobUuid\": \"<uuid>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 5469\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "759e9bdf-ad39-4109-8f2c-cb2d933bab64",
+              "name": "Authentication token missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"startDateTime\": \"<dateTime>\",\n  \"endDateTime\": \"<dateTime>\",\n  \"uuid\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"engineerUuid\": \"<uuid>\",\n  \"customerUuid\": \"<uuid>\",\n  \"jobUuid\": \"<uuid>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 5469\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8ee4c57-8e2d-4195-a339-cb328dd0f94c",
+          "name": "Get Diary Event",
+          "request": {
+            "name": "Get Diary Event",
+            "description": {
+              "content": "Retrieve a specific diary event by UUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "diary",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) Unique identifier (UUID) of the record"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "76b3b80e-8225-496d-b55a-38ce7dab6fec",
+              "name": "Diary event record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diary",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3004,\n  \"uuid\": \"f22447e3-32a0-5305-9186-3f9792ac0304\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"startDateTime\": \"2012-06-20T14:24:56.919Z\",\n  \"endDateTime\": \"1981-01-14T13:52:04.536Z\",\n  \"engineerUuid\": \"e7d5de7b-9ee8-8e36-1732-53dfaf5995f9\",\n  \"customerUuid\": \"7a69a34d-7be1-71c1-0987-490e56b733e3\",\n  \"jobUuid\": \"5b66452f-f156-a948-5913-ad82f2df03b5\",\n  \"eventType\": \"string\",\n  \"createdAt\": \"2017-01-03T14:06:31.507Z\",\n  \"updatedAt\": \"1967-10-15T19:50:20.413Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e19849c6-087c-4c00-bdaf-7a85ad868f88",
+              "name": "Authentication token missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diary",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 5469\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3a4e428-4737-4605-9e47-0a6efeab5f91",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diary",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 5469\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42ce85b5-e4da-4ca4-862e-09bfdb392890",
+          "name": "Update Diary Event",
+          "request": {
+            "name": "Update Diary Event",
+            "description": {
+              "content": "Edit an existing diary event identified by UUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "diary",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) Unique identifier (UUID) of the record"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"startDateTime\": \"<dateTime>\",\n  \"endDateTime\": \"<dateTime>\",\n  \"uuid\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"engineerUuid\": \"<uuid>\",\n  \"customerUuid\": \"<uuid>\",\n  \"jobUuid\": \"<uuid>\",\n  \"eventType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08274887-69fc-42e7-83fc-c45977a24657",
+              "name": "Diary event updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diary",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"startDateTime\": \"<dateTime>\",\n  \"endDateTime\": \"<dateTime>\",\n  \"uuid\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"engineerUuid\": \"<uuid>\",\n  \"customerUuid\": \"<uuid>\",\n  \"jobUuid\": \"<uuid>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3004,\n  \"uuid\": \"f22447e3-32a0-5305-9186-3f9792ac0304\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"startDateTime\": \"2012-06-20T14:24:56.919Z\",\n  \"endDateTime\": \"1981-01-14T13:52:04.536Z\",\n  \"engineerUuid\": \"e7d5de7b-9ee8-8e36-1732-53dfaf5995f9\",\n  \"customerUuid\": \"7a69a34d-7be1-71c1-0987-490e56b733e3\",\n  \"jobUuid\": \"5b66452f-f156-a948-5913-ad82f2df03b5\",\n  \"eventType\": \"string\",\n  \"createdAt\": \"2017-01-03T14:06:31.507Z\",\n  \"updatedAt\": \"1967-10-15T19:50:20.413Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87e1eb19-60f3-47db-bee6-cf233eb889b8",
+              "name": "Authentication token missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diary",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"startDateTime\": \"<dateTime>\",\n  \"endDateTime\": \"<dateTime>\",\n  \"uuid\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"engineerUuid\": \"<uuid>\",\n  \"customerUuid\": \"<uuid>\",\n  \"jobUuid\": \"<uuid>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 5469\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fffc77f-00bc-4fd9-9499-0c859934a944",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diary",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"startDateTime\": \"<dateTime>\",\n  \"endDateTime\": \"<dateTime>\",\n  \"uuid\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"engineerUuid\": \"<uuid>\",\n  \"customerUuid\": \"<uuid>\",\n  \"jobUuid\": \"<uuid>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 5469\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.commusoft.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Auth-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9e076fde-ecc2-46c4-a046-cd7625552833",
+    "name": "Commusoft Authentication Diary Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Commusoft API is a RESTful JSON-based API designed to allow third parties to integrate products and applications with Commusoft's field service management platform. It enables programmatic management of jobs, customers, engineers, quotes, invoices, parts, and service histories for trades businesses including HVAC, plumbing, electrical, and building maintenance contractors. The API supports integrations with accounting tools (QuickBooks, Xero, Sage), payment processors (Stripe, GoCardless), and workflow automation platforms (Zapier).",
+      "type": "text/plain"
+    }
+  }
+}

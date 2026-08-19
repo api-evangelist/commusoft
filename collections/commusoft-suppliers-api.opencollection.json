@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commusoft Authentication Suppliers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Auth-Token",
+      "value": "{{X-Auth-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Suppliers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Suppliers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.commusoft.com/api/v1/suppliers"
+          },
+          "docs": "Retrieve a list of supplier records."
+        },
+        {
+          "info": {
+            "name": "Create Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.commusoft.com/api/v1/suppliers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Insert a new supplier record into the system."
+        },
+        {
+          "info": {
+            "name": "Get Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.commusoft.com/api/v1/suppliers/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (UUID) of the record"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific supplier record by UUID."
+        },
+        {
+          "info": {
+            "name": "Update Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.commusoft.com/api/v1/suppliers/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (UUID) of the record"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit an existing supplier record identified by UUID."
+        },
+        {
+          "info": {
+            "name": "Delete Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.commusoft.com/api/v1/suppliers/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (UUID) of the record"
+              }
+            ]
+          },
+          "docs": "Soft-delete a supplier record."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

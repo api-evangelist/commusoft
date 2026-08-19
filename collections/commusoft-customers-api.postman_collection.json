@@ -1,0 +1,1081 @@
+{
+  "item": [
+    {
+      "id": "e2473def-c6c2-44a7-b6a8-d9e9b74e7ed2",
+      "name": "Customers",
+      "description": {
+        "content": "Manage customer records including addresses, contacts, and property details",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7c64bf41-96bf-4064-81cc-26be92a2069d",
+          "name": "List Customers",
+          "request": {
+            "name": "List Customers",
+            "description": {
+              "content": "Retrieve a list of customers from the Commusoft system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "uuid",
+                  "value": "<uuid>",
+                  "description": "Filter by UUID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae5703bc-4c3b-4c26-b8a7-b6f9e1406cfe",
+              "name": "List of customers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uuid",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 4134,\n    \"uuid\": \"f0ded0b1-9a9a-58c0-05bd-ece56c80fd3c\",\n    \"title\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"companyName\": \"string\",\n    \"email\": \"LwIwA@ffbj.cbe\",\n    \"telephone\": \"string\",\n    \"mobile\": \"string\",\n    \"address\": {\n      \"addressLine1\": \"string\",\n      \"addressLine2\": \"string\",\n      \"town\": \"string\",\n      \"county\": \"string\",\n      \"postcode\": \"string\",\n      \"country\": \"string\"\n    },\n    \"propertyDetails\": {\n      \"propertyType\": \"string\",\n      \"numberOfBedrooms\": 9524,\n      \"yearBuilt\": 9501,\n      \"boilerMake\": \"string\",\n      \"boilerModel\": \"string\"\n    },\n    \"accountingSettings\": {\n      \"accountingReference\": \"string\",\n      \"vatNumber\": \"string\",\n      \"paymentTerms\": 5975\n    },\n    \"deleted\": 1,\n    \"createdAt\": \"1957-08-07T14:26:03.978Z\",\n    \"updatedAt\": \"1963-08-27T08:43:00.599Z\"\n  },\n  {\n    \"id\": 7341,\n    \"uuid\": \"f3a21bb3-db3d-0520-f711-11f6bc0d0448\",\n    \"title\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"companyName\": \"string\",\n    \"email\": \"SXFj3oUOEqkr@YUOTsrZKmBTWWUYaNbqImisg.loi\",\n    \"telephone\": \"string\",\n    \"mobile\": \"string\",\n    \"address\": {\n      \"addressLine1\": \"string\",\n      \"addressLine2\": \"string\",\n      \"town\": \"string\",\n      \"county\": \"string\",\n      \"postcode\": \"string\",\n      \"country\": \"string\"\n    },\n    \"propertyDetails\": {\n      \"propertyType\": \"string\",\n      \"numberOfBedrooms\": 1092,\n      \"yearBuilt\": 9174,\n      \"boilerMake\": \"string\",\n      \"boilerModel\": \"string\"\n    },\n    \"accountingSettings\": {\n      \"accountingReference\": \"string\",\n      \"vatNumber\": \"string\",\n      \"paymentTerms\": 8560\n    },\n    \"deleted\": 1,\n    \"createdAt\": \"2020-12-29T22:31:19.864Z\",\n    \"updatedAt\": \"1997-04-28T07:50:10.582Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6e335e8-1a0a-421b-a8b9-65d9a46a3ef5",
+              "name": "Authentication token missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uuid",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 877\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2294dd8-cfb8-4fcc-8abf-b04c9555de7c",
+          "name": "Create Customer",
+          "request": {
+            "name": "Create Customer",
+            "description": {
+              "content": "Add a new customer record to the Commusoft system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"lastName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"telephone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"county\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"propertyDetails\": {\n    \"propertyType\": \"<string>\",\n    \"numberOfBedrooms\": \"<integer>\",\n    \"yearBuilt\": \"<integer>\",\n    \"boilerMake\": \"<string>\",\n    \"boilerModel\": \"<string>\"\n  },\n  \"accountingSettings\": {\n    \"accountingReference\": \"<string>\",\n    \"vatNumber\": \"<string>\",\n    \"paymentTerms\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e5256fc-afcc-4389-9609-638aba26ff13",
+              "name": "Customer created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"lastName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"telephone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"county\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"propertyDetails\": {\n    \"propertyType\": \"<string>\",\n    \"numberOfBedrooms\": \"<integer>\",\n    \"yearBuilt\": \"<integer>\",\n    \"boilerMake\": \"<string>\",\n    \"boilerModel\": \"<string>\"\n  },\n  \"accountingSettings\": {\n    \"accountingReference\": \"<string>\",\n    \"vatNumber\": \"<string>\",\n    \"paymentTerms\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5680,\n  \"uuid\": \"35346949-e28c-b58d-d775-3ad7ceb55271\",\n  \"title\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"companyName\": \"string\",\n  \"email\": \"cewlOo7gndeD@AHLCwaYulNelKrXbuUpKFXEOInnbypBX.khnn\",\n  \"telephone\": \"string\",\n  \"mobile\": \"string\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"county\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"propertyDetails\": {\n    \"propertyType\": \"<string>\",\n    \"numberOfBedrooms\": \"<integer>\",\n    \"yearBuilt\": \"<integer>\",\n    \"boilerMake\": \"<string>\",\n    \"boilerModel\": \"<string>\"\n  },\n  \"accountingSettings\": {\n    \"accountingReference\": \"<string>\",\n    \"vatNumber\": \"<string>\",\n    \"paymentTerms\": \"<integer>\"\n  },\n  \"deleted\": 1,\n  \"createdAt\": \"2023-12-30T02:45:54.555Z\",\n  \"updatedAt\": \"1973-08-19T18:52:31.118Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c84c30ec-969b-4805-a2d6-04746e67b1f5",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"lastName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"telephone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"county\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"propertyDetails\": {\n    \"propertyType\": \"<string>\",\n    \"numberOfBedrooms\": \"<integer>\",\n    \"yearBuilt\": \"<integer>\",\n    \"boilerMake\": \"<string>\",\n    \"boilerModel\": \"<string>\"\n  },\n  \"accountingSettings\": {\n    \"accountingReference\": \"<string>\",\n    \"vatNumber\": \"<string>\",\n    \"paymentTerms\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 877\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2aa4fb83-7e18-41b6-bbb8-54ee700b6db3",
+              "name": "Authentication token missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"lastName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"telephone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"county\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"propertyDetails\": {\n    \"propertyType\": \"<string>\",\n    \"numberOfBedrooms\": \"<integer>\",\n    \"yearBuilt\": \"<integer>\",\n    \"boilerMake\": \"<string>\",\n    \"boilerModel\": \"<string>\"\n  },\n  \"accountingSettings\": {\n    \"accountingReference\": \"<string>\",\n    \"vatNumber\": \"<string>\",\n    \"paymentTerms\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 877\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24387b2a-2a11-4136-b840-bcc789502701",
+          "name": "Get Customer",
+          "request": {
+            "name": "Get Customer",
+            "description": {
+              "content": "Retrieve a specific customer record by UUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) Unique identifier (UUID) of the record"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11b61724-8935-4215-b165-77b43230fd97",
+              "name": "Customer record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5680,\n  \"uuid\": \"35346949-e28c-b58d-d775-3ad7ceb55271\",\n  \"title\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"companyName\": \"string\",\n  \"email\": \"cewlOo7gndeD@AHLCwaYulNelKrXbuUpKFXEOInnbypBX.khnn\",\n  \"telephone\": \"string\",\n  \"mobile\": \"string\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"county\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"propertyDetails\": {\n    \"propertyType\": \"<string>\",\n    \"numberOfBedrooms\": \"<integer>\",\n    \"yearBuilt\": \"<integer>\",\n    \"boilerMake\": \"<string>\",\n    \"boilerModel\": \"<string>\"\n  },\n  \"accountingSettings\": {\n    \"accountingReference\": \"<string>\",\n    \"vatNumber\": \"<string>\",\n    \"paymentTerms\": \"<integer>\"\n  },\n  \"deleted\": 1,\n  \"createdAt\": \"2023-12-30T02:45:54.555Z\",\n  \"updatedAt\": \"1973-08-19T18:52:31.118Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b639070f-122f-4ea9-ab4f-33fdece75c0f",
+              "name": "Authentication token missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 877\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0e52866-48b0-4cbb-aa4f-d2ff1e0715b7",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 877\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02fccfc1-cd83-43a2-b00b-d55b56826292",
+          "name": "Update Customer",
+          "request": {
+            "name": "Update Customer",
+            "description": {
+              "content": "Edit an existing customer record identified by UUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) Unique identifier (UUID) of the record"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"lastName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"telephone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"county\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"propertyDetails\": {\n    \"propertyType\": \"<string>\",\n    \"numberOfBedrooms\": \"<integer>\",\n    \"yearBuilt\": \"<integer>\",\n    \"boilerMake\": \"<string>\",\n    \"boilerModel\": \"<string>\"\n  },\n  \"accountingSettings\": {\n    \"accountingReference\": \"<string>\",\n    \"vatNumber\": \"<string>\",\n    \"paymentTerms\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77ddea9d-0951-4c23-bb1f-7417e963e49c",
+              "name": "Customer updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"lastName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"telephone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"county\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"propertyDetails\": {\n    \"propertyType\": \"<string>\",\n    \"numberOfBedrooms\": \"<integer>\",\n    \"yearBuilt\": \"<integer>\",\n    \"boilerMake\": \"<string>\",\n    \"boilerModel\": \"<string>\"\n  },\n  \"accountingSettings\": {\n    \"accountingReference\": \"<string>\",\n    \"vatNumber\": \"<string>\",\n    \"paymentTerms\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5680,\n  \"uuid\": \"35346949-e28c-b58d-d775-3ad7ceb55271\",\n  \"title\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"companyName\": \"string\",\n  \"email\": \"cewlOo7gndeD@AHLCwaYulNelKrXbuUpKFXEOInnbypBX.khnn\",\n  \"telephone\": \"string\",\n  \"mobile\": \"string\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"county\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"propertyDetails\": {\n    \"propertyType\": \"<string>\",\n    \"numberOfBedrooms\": \"<integer>\",\n    \"yearBuilt\": \"<integer>\",\n    \"boilerMake\": \"<string>\",\n    \"boilerModel\": \"<string>\"\n  },\n  \"accountingSettings\": {\n    \"accountingReference\": \"<string>\",\n    \"vatNumber\": \"<string>\",\n    \"paymentTerms\": \"<integer>\"\n  },\n  \"deleted\": 1,\n  \"createdAt\": \"2023-12-30T02:45:54.555Z\",\n  \"updatedAt\": \"1973-08-19T18:52:31.118Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6057c1d0-21a8-45fa-af4f-3c7725cda5cf",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"lastName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"telephone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"county\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"propertyDetails\": {\n    \"propertyType\": \"<string>\",\n    \"numberOfBedrooms\": \"<integer>\",\n    \"yearBuilt\": \"<integer>\",\n    \"boilerMake\": \"<string>\",\n    \"boilerModel\": \"<string>\"\n  },\n  \"accountingSettings\": {\n    \"accountingReference\": \"<string>\",\n    \"vatNumber\": \"<string>\",\n    \"paymentTerms\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 877\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59ac3fb7-bee2-49c4-965e-c270538e05c4",
+              "name": "Authentication token missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"lastName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"telephone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"county\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"propertyDetails\": {\n    \"propertyType\": \"<string>\",\n    \"numberOfBedrooms\": \"<integer>\",\n    \"yearBuilt\": \"<integer>\",\n    \"boilerMake\": \"<string>\",\n    \"boilerModel\": \"<string>\"\n  },\n  \"accountingSettings\": {\n    \"accountingReference\": \"<string>\",\n    \"vatNumber\": \"<string>\",\n    \"paymentTerms\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 877\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7f9c3dc-2249-4398-a0a1-e99dd1c47ecb",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<uuid>\",\n  \"lastName\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"telephone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"county\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"propertyDetails\": {\n    \"propertyType\": \"<string>\",\n    \"numberOfBedrooms\": \"<integer>\",\n    \"yearBuilt\": \"<integer>\",\n    \"boilerMake\": \"<string>\",\n    \"boilerModel\": \"<string>\"\n  },\n  \"accountingSettings\": {\n    \"accountingReference\": \"<string>\",\n    \"vatNumber\": \"<string>\",\n    \"paymentTerms\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 877\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eca6fccc-6d2a-449a-a249-f034a1ca2835",
+          "name": "Delete Customer",
+          "request": {
+            "name": "Delete Customer",
+            "description": {
+              "content": "Soft-delete a customer record. Commusoft never permanently deletes a customer; instead the record's Deleted field is set to 1.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) Unique identifier (UUID) of the record"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35274721-7721-4fc2-94d7-ad13a4489296",
+              "name": "Customer soft-deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04a31340-22bd-4c53-a38e-d6964fe24cd2",
+              "name": "Authentication token missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 877\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41ce1c27-d3fb-4f59-bb4d-13460ee74cdb",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) Unique identifier (UUID) of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 877\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.commusoft.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Auth-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6764f14b-68bb-4fe9-bd49-dc75cf0a1385",
+    "name": "Commusoft Authentication Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Commusoft API is a RESTful JSON-based API designed to allow third parties to integrate products and applications with Commusoft's field service management platform. It enables programmatic management of jobs, customers, engineers, quotes, invoices, parts, and service histories for trades businesses including HVAC, plumbing, electrical, and building maintenance contractors. The API supports integrations with accounting tools (QuickBooks, Xero, Sage), payment processors (Stripe, GoCardless), and workflow automation platforms (Zapier).",
+      "type": "text/plain"
+    }
+  }
+}

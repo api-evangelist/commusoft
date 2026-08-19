@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commusoft Authentication Titles API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Auth-Token",
+      "value": "{{X-Auth-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Titles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Titles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.commusoft.com/api/v1/titles"
+          },
+          "docs": "Retrieve the list of available title settings (Mr, Mrs, Dr, etc.)."
+        },
+        {
+          "info": {
+            "name": "Create Title",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.commusoft.com/api/v1/titles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a new title setting."
+        },
+        {
+          "info": {
+            "name": "Update Title",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.commusoft.com/api/v1/titles/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (UUID) of the record"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit an existing title setting."
+        },
+        {
+          "info": {
+            "name": "Delete Title",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.commusoft.com/api/v1/titles/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (UUID) of the record"
+              }
+            ]
+          },
+          "docs": "Remove a title setting."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
