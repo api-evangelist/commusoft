@@ -53,6 +53,15 @@ apis:
   baseURL: https://api.commusoft.com
   tags:
   - Field Service Management
+  - Job
+  - Customers
+  - Engineers
+  - Invoices
+  - Quotes
+  - Parts
+  - Service History
+  tags_raw:
+  - Field Service Management
   - Jobs
   - Customers
   - Engineers
@@ -141,6 +150,8 @@ apis:
   humanURL: https://commusoft.docs.apiary.io/
   baseURL: https://api.commusoft.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
