@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 1
+edge_count: 2
 edges:
 - tag: Customers
   spec_file: commusoft-customers-api-openapi.yml
@@ -19,7 +19,17 @@ edges:
   capability_id_l1: BC-420
   capability_name: Customer Data Management
   confidence: 0.8
-  evidence: 'GET /customers listCustomers; POST /customers createCustomer; schemas: AccountingSettings,
-    PropertyDetails, Address, Customer'
-  reason: Full CRUD over customer master records including addresses, property details and accounting
-    settings — customer data management within the field-service platform.
+  evidence: 'POST /customers createCustomer Create Customer; schemas: Customer, CustomerInput, PropertyDetails,
+    AccountingSettings'
+  reason: Full CRUD over customer master records including addresses and property details — customer data
+    management.
+- tag: Suppliers
+  spec_file: commusoft-suppliers-api-openapi.yml
+  capability_id: BC-510.10
+  capability_id_l1: BC-510
+  capability_name: Supplier Onboarding Management
+  confidence: 0.7
+  evidence: 'POST /suppliers createSupplier Create Supplier; schemas: SupplierInput, Supplier, Address'
+  reason: CRUD over supplier records (registration/maintenance of supplier master) in a platform that
+    manages parts procurement; supplier onboarding/registration is the closest fit though performance/risk
+    aspects are absent.
