@@ -48,6 +48,17 @@ tags:
   - Job Management
   - HVAC
   - Plumbing
+  - Trade
+  - Scheduling
+  - Invoicing
+  - Engineers
+  - Customers
+  - Service History
+tags_raw:
+  - Field Service Management
+  - Job Management
+  - HVAC
+  - Plumbing
   - Trades
   - Scheduling
   - Invoicing
@@ -132,6 +143,8 @@ apis:
   humanURL: https://commusoft.docs.apiary.io/
   baseURL: https://api.commusoft.com
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
