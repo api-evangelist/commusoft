@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Commusoft Authentication Customers API
-  description: The Commusoft API is a RESTful JSON-based API designed to allow third parties to integrate products and applications with Commusoft's field service management platform. It enables programmatic management of jobs, customers, engineers, quotes, invoices, parts, and service histories for trades businesses including HVAC, plumbing, electrical, and building maintenance contractors. The API supports integrations with accounting tools (QuickBooks, Xero, Sage), payment processors (Stripe, GoCardless), and workflow automation platforms (Zapier).
+  title: Commusoft Customers API
+  description: The Commusoft API is a RESTful JSON-based API designed to allow third parties to integrate products and applications with Commusoft's field service management platform.
   version: 1.0.0
   contact:
     url: https://www.commusoft.com/
@@ -124,100 +124,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Customer:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Internal numeric ID
-          readOnly: true
-        uuid:
-          type: string
-          format: uuid
-          description: Universally unique identifier for the customer
-          readOnly: true
-        title:
-          type: string
-          description: Title (Mr, Mrs, Dr, etc.)
-        firstName:
-          type: string
-          description: Customer first name
-        lastName:
-          type: string
-          description: Customer last name
-        companyName:
-          type: string
-          description: Company name for business customers
-        email:
-          type: string
-          format: email
-          description: Primary email address
-        telephone:
-          type: string
-          description: Primary telephone number
-        mobile:
-          type: string
-          description: Mobile telephone number
-        address:
-          $ref: '#/components/schemas/Address'
-        propertyDetails:
-          $ref: '#/components/schemas/PropertyDetails'
-        accountingSettings:
-          $ref: '#/components/schemas/AccountingSettings'
-        deleted:
-          type: integer
-          enum:
-          - 0
-          - 1
-          description: Soft-delete flag; 1 indicates the record has been deleted
-          readOnly: true
-        createdAt:
-          type: string
-          format: date-time
-          readOnly: true
-        updatedAt:
-          type: string
-          format: date-time
-          readOnly: true
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        code:
-          type: integer
-          description: Error code
-    PropertyDetails:
-      type: object
-      properties:
-        propertyType:
-          type: string
-          description: Type of property (residential, commercial, etc.)
-        numberOfBedrooms:
-          type: integer
-          description: Number of bedrooms
-        yearBuilt:
-          type: integer
-          description: Year the property was built
-        boilerMake:
-          type: string
-          description: Make of the boiler installed
-        boilerModel:
-          type: string
-          description: Model of the boiler installed
-    AccountingSettings:
-      type: object
-      properties:
-        accountingReference:
-          type: string
-          description: External accounting system reference code
-        vatNumber:
-          type: string
-          description: VAT registration number
-        paymentTerms:
-          type: integer
-          description: Payment terms in days
     CustomerInput:
       type: object
       required:
@@ -277,6 +183,119 @@ components:
         country:
           type: string
           description: Country
+    AccountingSettings:
+      type: object
+      properties:
+        accountingReference:
+          type: string
+          description: External accounting system reference code
+        vatNumber:
+          type: string
+          description: VAT registration number
+        paymentTerms:
+          type: integer
+          description: Payment terms in days
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Internal numeric ID
+          readOnly: true
+        uuid:
+          type: string
+          format: uuid
+          description: Universally unique identifier for the customer
+          readOnly: true
+        title:
+          type: string
+          description: Title (Mr, Mrs, Dr, etc.)
+        firstName:
+          type: string
+          description: Customer first name
+        lastName:
+          type: string
+          description: Customer last name
+        companyName:
+          type: string
+          description: Company name for business customers
+        email:
+          type: string
+          format: email
+          description: Primary email address
+        telephone:
+          type: string
+          description: Primary telephone number
+        mobile:
+          type: string
+          description: Mobile telephone number
+        address:
+          $ref: '#/components/schemas/Address'
+        propertyDetails:
+          $ref: '#/components/schemas/PropertyDetails'
+        accountingSettings:
+          $ref: '#/components/schemas/AccountingSettings'
+        deleted:
+          type: integer
+          enum:
+          - 0
+          - 1
+          description: Soft-delete flag; 1 indicates the record has been deleted
+          readOnly: true
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+    PropertyDetails:
+      type: object
+      properties:
+        propertyType:
+          type: string
+          description: Type of property (residential, commercial, etc.)
+        numberOfBedrooms:
+          type: integer
+          description: Number of bedrooms
+        yearBuilt:
+          type: integer
+          description: Year the property was built
+        boilerMake:
+          type: string
+          description: Make of the boiler installed
+        boilerModel:
+          type: string
+          description: Model of the boiler installed
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     UuidParam:
       name: uuid
@@ -294,25 +313,6 @@ components:
       schema:
         type: string
         format: uuid
-  responses:
-    Unauthorized:
-      description: Authentication token missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request body or parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiTokenHeader:
       type: apiKey

@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Commusoft Authentication Contacts API
-  description: The Commusoft API is a RESTful JSON-based API designed to allow third parties to integrate products and applications with Commusoft's field service management platform. It enables programmatic management of jobs, customers, engineers, quotes, invoices, parts, and service histories for trades businesses including HVAC, plumbing, electrical, and building maintenance contractors. The API supports integrations with accounting tools (QuickBooks, Xero, Sage), payment processors (Stripe, GoCardless), and workflow automation platforms (Zapier).
+  title: Commusoft Contacts API
+  description: The Commusoft API is a RESTful JSON-based API designed to allow third parties to integrate products and applications with Commusoft's field service management platform.
   version: 1.0.0
   contact:
     url: https://www.commusoft.com/
@@ -79,16 +79,26 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        code:
-          type: integer
-          description: Error code
     ContactInput:
       type: object
       required:
@@ -120,6 +130,15 @@ components:
         linkedEntityUuid:
           type: string
           format: uuid
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
     Contact:
       type: object
       properties:
@@ -157,25 +176,6 @@ components:
           type: string
           format: date-time
           readOnly: true
-  responses:
-    Unauthorized:
-      description: Authentication token missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request body or parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     UuidPath:
       name: uuid
