@@ -120,27 +120,15 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Address:
+    Error:
       type: object
       properties:
-        addressLine1:
+        message:
           type: string
-          description: First line of the address
-        addressLine2:
-          type: string
-          description: Second line of the address
-        town:
-          type: string
-          description: Town or city
-        county:
-          type: string
-          description: County or region
-        postcode:
-          type: string
-          description: Postcode or zip code
-        country:
-          type: string
-          description: Country
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
     SupplierInput:
       type: object
       required:
@@ -197,16 +185,34 @@ components:
           type: string
           format: date-time
           readOnly: true
-    Error:
+    Address:
       type: object
       properties:
-        message:
+        addressLine1:
           type: string
-          description: Human-readable error message
-        code:
-          type: integer
-          description: Error code
+          description: First line of the address
+        addressLine2:
+          type: string
+          description: Second line of the address
+        town:
+          type: string
+          description: Town or city
+        county:
+          type: string
+          description: County or region
+        postcode:
+          type: string
+          description: Postcode or zip code
+        country:
+          type: string
+          description: Country
   responses:
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     BadRequest:
       description: Invalid request body or parameters
       content:
@@ -215,12 +221,6 @@ components:
             $ref: '#/components/schemas/Error'
     NotFound:
       description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication token missing or invalid
       content:
         application/json:
           schema:

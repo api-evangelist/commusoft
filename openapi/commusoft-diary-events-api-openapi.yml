@@ -104,38 +104,26 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    DiaryEventInput:
-      type: object
-      required:
-      - title
-      - startDateTime
-      - endDateTime
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        title:
-          type: string
-        description:
-          type: string
-        startDateTime:
-          type: string
-          format: date-time
-        endDateTime:
-          type: string
-          format: date-time
-        engineerUuid:
-          type: string
-          format: uuid
-        customerUuid:
-          type: string
-          format: uuid
-        jobUuid:
-          type: string
-          format: uuid
-        eventType:
-          type: string
     DiaryEvent:
       type: object
       properties:
@@ -183,6 +171,37 @@ components:
           type: string
           format: date-time
           readOnly: true
+    DiaryEventInput:
+      type: object
+      required:
+      - title
+      - startDateTime
+      - endDateTime
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        startDateTime:
+          type: string
+          format: date-time
+        endDateTime:
+          type: string
+          format: date-time
+        engineerUuid:
+          type: string
+          format: uuid
+        customerUuid:
+          type: string
+          format: uuid
+        jobUuid:
+          type: string
+          format: uuid
+        eventType:
+          type: string
     Error:
       type: object
       properties:
@@ -192,25 +211,6 @@ components:
         code:
           type: integer
           description: Error code
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication token missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     UuidPath:
       name: uuid

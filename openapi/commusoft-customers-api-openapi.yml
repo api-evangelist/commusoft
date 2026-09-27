@@ -124,6 +124,36 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    AccountingSettings:
+      type: object
+      properties:
+        accountingReference:
+          type: string
+          description: External accounting system reference code
+        vatNumber:
+          type: string
+          description: VAT registration number
+        paymentTerms:
+          type: integer
+          description: Payment terms in days
+    PropertyDetails:
+      type: object
+      properties:
+        propertyType:
+          type: string
+          description: Type of property (residential, commercial, etc.)
+        numberOfBedrooms:
+          type: integer
+          description: Number of bedrooms
+        yearBuilt:
+          type: integer
+          description: Year the property was built
+        boilerMake:
+          type: string
+          description: Make of the boiler installed
+        boilerModel:
+          type: string
+          description: Model of the boiler installed
     CustomerInput:
       type: object
       required:
@@ -162,39 +192,6 @@ components:
           $ref: '#/components/schemas/PropertyDetails'
         accountingSettings:
           $ref: '#/components/schemas/AccountingSettings'
-    Address:
-      type: object
-      properties:
-        addressLine1:
-          type: string
-          description: First line of the address
-        addressLine2:
-          type: string
-          description: Second line of the address
-        town:
-          type: string
-          description: Town or city
-        county:
-          type: string
-          description: County or region
-        postcode:
-          type: string
-          description: Postcode or zip code
-        country:
-          type: string
-          description: Country
-    AccountingSettings:
-      type: object
-      properties:
-        accountingReference:
-          type: string
-          description: External accounting system reference code
-        vatNumber:
-          type: string
-          description: VAT registration number
-        paymentTerms:
-          type: integer
-          description: Payment terms in days
     Customer:
       type: object
       properties:
@@ -250,24 +247,27 @@ components:
           type: string
           format: date-time
           readOnly: true
-    PropertyDetails:
+    Address:
       type: object
       properties:
-        propertyType:
+        addressLine1:
           type: string
-          description: Type of property (residential, commercial, etc.)
-        numberOfBedrooms:
-          type: integer
-          description: Number of bedrooms
-        yearBuilt:
-          type: integer
-          description: Year the property was built
-        boilerMake:
+          description: First line of the address
+        addressLine2:
           type: string
-          description: Make of the boiler installed
-        boilerModel:
+          description: Second line of the address
+        town:
           type: string
-          description: Model of the boiler installed
+          description: Town or city
+        county:
+          type: string
+          description: County or region
+        postcode:
+          type: string
+          description: Postcode or zip code
+        country:
+          type: string
+          description: Country
     Error:
       type: object
       properties:
@@ -277,25 +277,6 @@ components:
         code:
           type: integer
           description: Error code
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication token missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     UuidParam:
       name: uuid
@@ -313,6 +294,25 @@ components:
       schema:
         type: string
         format: uuid
+  responses:
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiTokenHeader:
       type: apiKey

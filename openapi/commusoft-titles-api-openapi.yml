@@ -110,6 +110,15 @@ components:
         name:
           type: string
           description: The title value
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
     Title:
       type: object
       properties:
@@ -123,28 +132,6 @@ components:
         name:
           type: string
           description: The title value (e.g. Mr, Mrs, Dr, Miss, Ms)
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        code:
-          type: integer
-          description: Error code
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication token missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     UuidPath:
       name: uuid
@@ -154,6 +141,19 @@ components:
       schema:
         type: string
         format: uuid
+  responses:
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiTokenHeader:
       type: apiKey

@@ -43,6 +43,9 @@ url: https://raw.githubusercontent.com/api-evangelist/commusoft/refs/heads/main/
 created: "2026-06-13"
 modified: "2026-06-13"
 specificationVersion: '0.23'
+x-docs-platform: apiary
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-24
 tags:
   - Field Service Management
   - Job Management
