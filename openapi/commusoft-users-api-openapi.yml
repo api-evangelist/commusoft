@@ -38,15 +38,24 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    UuidPath:
+      name: uuid
+      in: path
+      required: true
+      description: Unique identifier (UUID) of the record
+      schema:
+        type: string
+        format: uuid
   responses:
-    Unauthorized:
-      description: Authentication token missing or invalid
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication token missing or invalid
       content:
         application/json:
           schema:
@@ -88,15 +97,6 @@ components:
         code:
           type: integer
           description: Error code
-  parameters:
-    UuidPath:
-      name: uuid
-      in: path
-      required: true
-      description: Unique identifier (UUID) of the record
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     ApiTokenHeader:
       type: apiKey

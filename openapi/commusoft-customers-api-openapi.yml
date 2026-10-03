@@ -123,75 +123,43 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    UuidParam:
+      name: uuid
+      in: query
+      required: false
+      description: Filter by UUID
+      schema:
+        type: string
+        format: uuid
+    UuidPath:
+      name: uuid
+      in: path
+      required: true
+      description: Unique identifier (UUID) of the record
+      schema:
+        type: string
+        format: uuid
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    AccountingSettings:
-      type: object
-      properties:
-        accountingReference:
-          type: string
-          description: External accounting system reference code
-        vatNumber:
-          type: string
-          description: VAT registration number
-        paymentTerms:
-          type: integer
-          description: Payment terms in days
-    PropertyDetails:
-      type: object
-      properties:
-        propertyType:
-          type: string
-          description: Type of property (residential, commercial, etc.)
-        numberOfBedrooms:
-          type: integer
-          description: Number of bedrooms
-        yearBuilt:
-          type: integer
-          description: Year the property was built
-        boilerMake:
-          type: string
-          description: Make of the boiler installed
-        boilerModel:
-          type: string
-          description: Model of the boiler installed
-    CustomerInput:
-      type: object
-      required:
-      - uuid
-      - lastName
-      properties:
-        uuid:
-          type: string
-          format: uuid
-          description: UUID for the new customer record
-        title:
-          type: string
-          description: Title (Mr, Mrs, Dr, etc.)
-        firstName:
-          type: string
-          description: Customer first name
-        lastName:
-          type: string
-          description: Customer last name
-        companyName:
-          type: string
-          description: Company name for business customers
-        email:
-          type: string
-          format: email
-          description: Primary email address
-        telephone:
-          type: string
-          description: Primary telephone number
-        mobile:
-          type: string
-          description: Mobile telephone number
-        address:
-          $ref: '#/components/schemas/Address'
-        propertyDetails:
-          $ref: '#/components/schemas/PropertyDetails'
-        accountingSettings:
-          $ref: '#/components/schemas/AccountingSettings'
     Customer:
       type: object
       properties:
@@ -247,6 +215,83 @@ components:
           type: string
           format: date-time
           readOnly: true
+    CustomerInput:
+      type: object
+      required:
+      - uuid
+      - lastName
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          description: UUID for the new customer record
+        title:
+          type: string
+          description: Title (Mr, Mrs, Dr, etc.)
+        firstName:
+          type: string
+          description: Customer first name
+        lastName:
+          type: string
+          description: Customer last name
+        companyName:
+          type: string
+          description: Company name for business customers
+        email:
+          type: string
+          format: email
+          description: Primary email address
+        telephone:
+          type: string
+          description: Primary telephone number
+        mobile:
+          type: string
+          description: Mobile telephone number
+        address:
+          $ref: '#/components/schemas/Address'
+        propertyDetails:
+          $ref: '#/components/schemas/PropertyDetails'
+        accountingSettings:
+          $ref: '#/components/schemas/AccountingSettings'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
+    AccountingSettings:
+      type: object
+      properties:
+        accountingReference:
+          type: string
+          description: External accounting system reference code
+        vatNumber:
+          type: string
+          description: VAT registration number
+        paymentTerms:
+          type: integer
+          description: Payment terms in days
+    PropertyDetails:
+      type: object
+      properties:
+        propertyType:
+          type: string
+          description: Type of property (residential, commercial, etc.)
+        numberOfBedrooms:
+          type: integer
+          description: Number of bedrooms
+        yearBuilt:
+          type: integer
+          description: Year the property was built
+        boilerMake:
+          type: string
+          description: Make of the boiler installed
+        boilerModel:
+          type: string
+          description: Model of the boiler installed
     Address:
       type: object
       properties:
@@ -268,51 +313,6 @@ components:
         country:
           type: string
           description: Country
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        code:
-          type: integer
-          description: Error code
-  parameters:
-    UuidParam:
-      name: uuid
-      in: query
-      required: false
-      description: Filter by UUID
-      schema:
-        type: string
-        format: uuid
-    UuidPath:
-      name: uuid
-      in: path
-      required: true
-      description: Unique identifier (UUID) of the record
-      schema:
-        type: string
-        format: uuid
-  responses:
-    Unauthorized:
-      description: Authentication token missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request body or parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiTokenHeader:
       type: apiKey

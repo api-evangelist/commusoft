@@ -102,19 +102,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication token missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Location:
       type: object
@@ -142,6 +129,29 @@ components:
           type: string
           format: date-time
           readOnly: true
+    LocationInput:
+      type: object
+      required:
+      - name
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        description:
+          type: string
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
     Address:
       type: object
       properties:
@@ -163,29 +173,6 @@ components:
         country:
           type: string
           description: Country
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        code:
-          type: integer
-          description: Error code
-    LocationInput:
-      type: object
-      required:
-      - name
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        description:
-          type: string
   parameters:
     UuidPath:
       name: uuid
@@ -195,6 +182,19 @@ components:
       schema:
         type: string
         format: uuid
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiTokenHeader:
       type: apiKey

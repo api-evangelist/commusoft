@@ -98,6 +98,28 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    UuidPath:
+      name: uuid
+      in: path
+      required: true
+      description: Unique identifier (UUID) of the record
+      schema:
+        type: string
+        format: uuid
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     TitleInput:
       type: object
@@ -132,28 +154,6 @@ components:
         name:
           type: string
           description: The title value (e.g. Mr, Mrs, Dr, Miss, Ms)
-  parameters:
-    UuidPath:
-      name: uuid
-      in: path
-      required: true
-      description: Unique identifier (UUID) of the record
-      schema:
-        type: string
-        format: uuid
-  responses:
-    Unauthorized:
-      description: Authentication token missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiTokenHeader:
       type: apiKey

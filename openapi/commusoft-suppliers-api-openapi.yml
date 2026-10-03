@@ -119,35 +119,35 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    UuidPath:
+      name: uuid
+      in: path
+      required: true
+      description: Unique identifier (UUID) of the record
+      schema:
+        type: string
+        format: uuid
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        code:
-          type: integer
-          description: Error code
-    SupplierInput:
-      type: object
-      required:
-      - companyName
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        companyName:
-          type: string
-        contactName:
-          type: string
-        email:
-          type: string
-          format: email
-        telephone:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
     Supplier:
       type: object
       properties:
@@ -185,6 +185,34 @@ components:
           type: string
           format: date-time
           readOnly: true
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
+    SupplierInput:
+      type: object
+      required:
+      - companyName
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        companyName:
+          type: string
+        contactName:
+          type: string
+        email:
+          type: string
+          format: email
+        telephone:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
     Address:
       type: object
       properties:
@@ -206,34 +234,6 @@ components:
         country:
           type: string
           description: Country
-  responses:
-    Unauthorized:
-      description: Authentication token missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request body or parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    UuidPath:
-      name: uuid
-      in: path
-      required: true
-      description: Unique identifier (UUID) of the record
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     ApiTokenHeader:
       type: apiKey
