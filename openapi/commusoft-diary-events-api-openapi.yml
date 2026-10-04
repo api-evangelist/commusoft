@@ -114,8 +114,8 @@ components:
         type: string
         format: uuid
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication token missing or invalid
       content:
         application/json:
           schema:
@@ -126,22 +126,44 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication token missing or invalid
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    Error:
+    DiaryEventInput:
       type: object
+      required:
+      - title
+      - startDateTime
+      - endDateTime
       properties:
-        message:
+        uuid:
           type: string
-          description: Human-readable error message
-        code:
-          type: integer
-          description: Error code
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        startDateTime:
+          type: string
+          format: date-time
+        endDateTime:
+          type: string
+          format: date-time
+        engineerUuid:
+          type: string
+          format: uuid
+        customerUuid:
+          type: string
+          format: uuid
+        jobUuid:
+          type: string
+          format: uuid
+        eventType:
+          type: string
     DiaryEvent:
       type: object
       properties:
@@ -189,37 +211,15 @@ components:
           type: string
           format: date-time
           readOnly: true
-    DiaryEventInput:
+    Error:
       type: object
-      required:
-      - title
-      - startDateTime
-      - endDateTime
       properties:
-        uuid:
+        message:
           type: string
-          format: uuid
-        title:
-          type: string
-        description:
-          type: string
-        startDateTime:
-          type: string
-          format: date-time
-        endDateTime:
-          type: string
-          format: date-time
-        engineerUuid:
-          type: string
-          format: uuid
-        customerUuid:
-          type: string
-          format: uuid
-        jobUuid:
-          type: string
-          format: uuid
-        eventType:
-          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
   securitySchemes:
     ApiTokenHeader:
       type: apiKey

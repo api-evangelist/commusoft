@@ -108,39 +108,19 @@ components:
         type: string
         format: uuid
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication token missing or invalid
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    TitleInput:
-      type: object
-      required:
-      - name
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The title value
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        code:
-          type: integer
-          description: Error code
     Title:
       type: object
       properties:
@@ -154,6 +134,26 @@ components:
         name:
           type: string
           description: The title value (e.g. Mr, Mrs, Dr, Miss, Ms)
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
+    TitleInput:
+      type: object
+      required:
+      - name
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The title value
   securitySchemes:
     ApiTokenHeader:
       type: apiKey

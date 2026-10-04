@@ -48,14 +48,14 @@ components:
         type: string
         format: uuid
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication token missing or invalid
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication token missing or invalid
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
