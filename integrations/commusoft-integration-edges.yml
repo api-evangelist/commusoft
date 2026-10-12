@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/commusoft/integrations
+- https://n8n.io/integrations/commusoft/
+- https://composio.dev/toolkits/commusoft
+- https://monid.ai/tools/commusoft
+checked:
+- https://composio.dev/toolkits/commusoft
+- https://monid.ai/tools/commusoft
+- https://n8n.io/integrations/commusoft/
+- https://zapier.com/apps/commusoft/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
