@@ -102,15 +102,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    UuidPath:
-      name: uuid
-      in: path
-      required: true
-      description: Unique identifier (UUID) of the record
-      schema:
-        type: string
-        format: uuid
   responses:
     Unauthorized:
       description: Authentication token missing or invalid
@@ -125,29 +116,6 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    LocationInput:
-      type: object
-      required:
-      - name
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/Address'
-        description:
-          type: string
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        code:
-          type: integer
-          description: Error code
     Address:
       type: object
       properties:
@@ -169,6 +137,20 @@ components:
         country:
           type: string
           description: Country
+    LocationInput:
+      type: object
+      required:
+      - name
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        description:
+          type: string
     Location:
       type: object
       properties:
@@ -195,6 +177,24 @@ components:
           type: string
           format: date-time
           readOnly: true
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
+  parameters:
+    UuidPath:
+      name: uuid
+      in: path
+      required: true
+      description: Unique identifier (UUID) of the record
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     ApiTokenHeader:
       type: apiKey

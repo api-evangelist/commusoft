@@ -119,24 +119,9 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    UuidPath:
-      name: uuid
-      in: path
-      required: true
-      description: Unique identifier (UUID) of the record
-      schema:
-        type: string
-        format: uuid
   responses:
     Unauthorized:
       description: Authentication token missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request body or parameters
       content:
         application/json:
           schema:
@@ -147,7 +132,34 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Address:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+          description: First line of the address
+        addressLine2:
+          type: string
+          description: Second line of the address
+        town:
+          type: string
+          description: Town or city
+        county:
+          type: string
+          description: County or region
+        postcode:
+          type: string
+          description: Postcode or zip code
+        country:
+          type: string
+          description: Country
     Supplier:
       type: object
       properties:
@@ -213,27 +225,15 @@ components:
         code:
           type: integer
           description: Error code
-    Address:
-      type: object
-      properties:
-        addressLine1:
-          type: string
-          description: First line of the address
-        addressLine2:
-          type: string
-          description: Second line of the address
-        town:
-          type: string
-          description: Town or city
-        county:
-          type: string
-          description: County or region
-        postcode:
-          type: string
-          description: Postcode or zip code
-        country:
-          type: string
-          description: Country
+  parameters:
+    UuidPath:
+      name: uuid
+      in: path
+      required: true
+      description: Unique identifier (UUID) of the record
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     ApiTokenHeader:
       type: apiKey

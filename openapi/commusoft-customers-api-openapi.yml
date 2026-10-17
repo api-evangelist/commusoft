@@ -123,42 +123,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    UuidPath:
-      name: uuid
-      in: path
-      required: true
-      description: Unique identifier (UUID) of the record
-      schema:
-        type: string
-        format: uuid
-    UuidParam:
-      name: uuid
-      in: query
-      required: false
-      description: Filter by UUID
-      schema:
-        type: string
-        format: uuid
-  responses:
-    Unauthorized:
-      description: Authentication token missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid request body or parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     AccountingSettings:
       type: object
@@ -172,6 +136,27 @@ components:
         paymentTerms:
           type: integer
           description: Payment terms in days
+    Address:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+          description: First line of the address
+        addressLine2:
+          type: string
+          description: Second line of the address
+        town:
+          type: string
+          description: Town or city
+        county:
+          type: string
+          description: County or region
+        postcode:
+          type: string
+          description: Postcode or zip code
+        country:
+          type: string
+          description: Country
     PropertyDetails:
       type: object
       properties:
@@ -190,6 +175,15 @@ components:
         boilerModel:
           type: string
           description: Model of the boiler installed
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error message
+        code:
+          type: integer
+          description: Error code
     Customer:
       type: object
       properties:
@@ -245,36 +239,6 @@ components:
           type: string
           format: date-time
           readOnly: true
-    Address:
-      type: object
-      properties:
-        addressLine1:
-          type: string
-          description: First line of the address
-        addressLine2:
-          type: string
-          description: Second line of the address
-        town:
-          type: string
-          description: Town or city
-        county:
-          type: string
-          description: County or region
-        postcode:
-          type: string
-          description: Postcode or zip code
-        country:
-          type: string
-          description: Country
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Human-readable error message
-        code:
-          type: integer
-          description: Error code
     CustomerInput:
       type: object
       required:
@@ -313,6 +277,42 @@ components:
           $ref: '#/components/schemas/PropertyDetails'
         accountingSettings:
           $ref: '#/components/schemas/AccountingSettings'
+  parameters:
+    UuidPath:
+      name: uuid
+      in: path
+      required: true
+      description: Unique identifier (UUID) of the record
+      schema:
+        type: string
+        format: uuid
+    UuidParam:
+      name: uuid
+      in: query
+      required: false
+      description: Filter by UUID
+      schema:
+        type: string
+        format: uuid
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication token missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiTokenHeader:
       type: apiKey
