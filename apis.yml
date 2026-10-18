@@ -47,7 +47,7 @@ x-docs-platform: apiary
 x-docs-platform-confidence: high
 x-docs-platform-checked: 2026-09-24
 tags:
-  - Field Service Management
+  - Field Service
   - Job Management
   - HVAC
   - Plumbing
@@ -78,7 +78,7 @@ apis:
   humanURL: https://commusoft.docs.apiary.io/
   baseURL: https://api.commusoft.com
   tags:
-  - Field Service Management
+  - Field Service
   - Job
   - Customers
   - Engineers
